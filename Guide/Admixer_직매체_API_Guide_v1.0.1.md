@@ -109,6 +109,14 @@ Version|Date|Note
 ### 2.1. 설명
 - Admixer의 광고 API로써, 자체 광고 및 제휴 DSP(외부) 광고를 제공합니다.
 - HTTP GET 방식으로 정의된 객체를 작성해 ADMIXER 인터페이스를 호출합니다.
+- 원활한 광고 응답 및 물량 확보를 위해서는 최대한 많은 객체를 포함하여 Request URL을 구성해주십시오.
+- 구글 클라우드, AWS와 같이 해외 서버를 사용하여 Request URL을 호출하시는 경우, IP주소가 해외로 인식될 수 있으니, http 헤더에 x-forwarded-for 설정하여 Request URL을 호출해 주십시오.\
+(참고:  https://docs.aws.amazon.com/ko_kr/elasticloadbalancing/latest/application/x-forwarded-headers.html)
+* UA(User-agent) 값은 아래 예시를 참고하여 전달 부탁드립니다.\
+  <기본 형태>\
+`User-Agent: <product> / <product-version> <comment>`\
+  <Chrom 예시>\
+`Mozilla/5.0 (Linux; Android 8.0.0; SAMSUNG-SM-G950N/KSU3CRJ1 Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/8.2 Chrome/63.0.3239.111 Mobile Safari/537.36`
 
 ### 2.2. 도메인 정보
 구분|URL
@@ -143,6 +151,7 @@ adid|string|(앱의 경우)<br>**필수**|Android : Google Advertise ID<br>iOS :
 adid_use|integer|권장|브라우저가 헤더에 설정한 ADID 표준 추적 플래그,<br>미기입시 1|0 : no<br>1 : yes
 model|string|권장|디바이스 모델|
 carrier|string|권장|디바이스 통신사|
+<div align="left"><i>*원활한 광고 응답 및 물량 확보를 위해서는 최대한 많은 객체를 포함하여 Request URL을 구성해주십시오. </i></div>
 
 ### 2.6. 비디오 객체
 - adformat이 video인 경우에 사용합니다.
